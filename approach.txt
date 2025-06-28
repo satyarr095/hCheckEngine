@@ -1,0 +1,11 @@
+Psudo approach 
+
+1. take the input from the s3 url 
+
+2. use Ollam an search and then net search 
+
+3. customize the prompt so that it output the exact response 
+
+4. use the pakka output
+
+5. check the output 

@@ -1,0 +1,113 @@
+# HYPHENATION RULES FOR LLM PROCESSING
+
+## 1. DICTIONARY SELECTION RULES
+- IF language_variant == "US English":
+  - PRIMARY_DICTIONARY = "Merriam Webster"
+- IF language_variant == "UK English":
+  - PRIMARY_DICTIONARY = "Oxford" OR "Collins"
+
+## 2. TEXT ANALYSIS SCOPE
+### INCLUDE these sections:
+- Body text
+- Figure captions
+- Table captions and content
+- Abstracts
+- Title
+- Keywords
+- Headings
+
+### EXCLUDE these sections:
+- Reference section
+- In-text citations
+- Author names and affiliations
+- Corresponding author email addresses
+
+## 3. CONTEXT ANALYSIS RULES
+### Rule 3.1: Compound Adjective Detection
+- IF word_pattern matches "[adjective]-[adjective] [noun]":
+  - APPLY: Hyphenate compound adjective before noun
+  - EXAMPLE: "well known fact" → "well-known fact"
+  - REASON: Compound adjective modifying a noun
+
+### Rule 3.2: Predicate Adjective Detection
+- IF word_pattern matches "[noun] [verb] [adjective] [adjective]":
+  - APPLY: Remove hyphen in predicate position
+  - EXAMPLE: "fact is well-known" → "fact is well known"
+  - REASON: Adjective follows the noun (predicate position)
+
+## 4. LANGUAGE-SPECIFIC HYPHENATION RULES
+### Rule 4.1: US English Hyphenation
+- IF language_variant == "US English":
+  - "co-operation" → "cooperation" (Remove hyphen, close up)
+  - REASON: Per Merriam Webster, cooperation should be without hyphen as noun
+
+### Rule 4.2: UK English Hyphenation
+- IF language_variant == "UK English":
+  - "cooperation" → "co-operation" (Add hyphen)
+  - REASON: Per Oxford/Collins dictionary, co-operation should be hyphenated as noun
+
+## 5. DICTIONARY CONSISTENCY RULES
+### Rule 5.1: Dictionary Lookup Process
+1. CHECK if term exists in primary dictionary
+2. IF term NOT found in dictionary:
+   - SCAN document for variant forms (hyphenated, closed, spaced)
+   - COUNT occurrences of each variant
+   - IF multiple variants found: FLAG as inconsistent
+   - IF single variant used: ACCEPT as author-defined
+
+### Rule 5.2: Consistency Flagging
+- EXAMPLE: Document contains:
+  - "sub-circle" (2 instances)
+  - "subcircle" (3 instances)  
+  - "sub circle" (2 instances)
+- ACTION: FLAG inconsistency, suggest unifying to most frequent form
+
+## 6. GRAMMATICAL HYPHENATION RULES
+### Rule 6.1: Compound Modifiers Before Nouns
+- PATTERN: "[adjective]-[adjective] [noun]"
+- EXAMPLES: "state-of-the-art method", "high-risk group"
+- ACTION: Ensure hyphenation when compound modifier precedes noun
+
+### Rule 6.2: Avoid False Positives After Nouns
+- PATTERN: "[noun] [verb] [adjective] [adjective]"
+- EXAMPLE: "The method is state of the art" (CORRECT - no hyphen needed)
+- ACTION: Do not suggest hyphenation in predicate position
+
+### Rule 6.3: Adverb-Adjective Combinations
+- IF first_word.endswith("-ly") AND second_word.is_adjective():
+  - ACTION: Remove hyphen
+  - EXAMPLE: "highly-efficient method" → "highly efficient method"
+  - REASON: Adverbs ending in -ly should not be hyphenated to adjectives
+
+### Rule 6.4: Hyphen vs En Dash Detection
+- PATTERN: "[geographic_location]-[geographic_location]"
+- ACTION: Suggest en dash instead of hyphen
+- EXAMPLE: "Asia-Europe route" → "Asia–Europe route"
+
+### Rule 6.5: Ambiguous Terms
+- MAINTAIN distinction between:
+  - "re-form" (to form again) vs "reform" (to change)
+  - "re-sign" (to sign again) vs "resign" (to quit job)
+- ACTION: Analyze context to determine correct form
+
+### Rule 6.6: Number + Unit/Descriptor Compounds
+#### As Adjectives (hyphenate):
+- PATTERN: "[number]-[unit/descriptor] [noun]"
+- EXAMPLES: "5-year plan", "10-fold increase"
+
+#### As Nouns (do not hyphenate):
+- PATTERN: "[noun] [verb] [number] [unit]"
+- EXAMPLE: "The plan lasts 5 years"
+
+## 7. OUTPUT FILTERING RULES
+### Rule 7.1: Only Flag Errors
+- DO NOT flag correctly hyphenated terms
+- ONLY flag: Incorrect hyphenation, Missing hyphens, Inconsistent usage
+- PROVIDE: Original text, Suggested correction, Reason for change
+
+## 8. PROCESSING PRIORITY
+1. Check dictionary existence (Rules 1, 5)
+2. Analyze grammatical context (Rules 3, 6)
+3. Apply language-specific rules (Rule 4)
+4. Verify consistency (Rule 5)
+5. Format output (Rule 7) 
