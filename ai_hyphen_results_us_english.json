@@ -1,3 +1,555 @@
 {
-  "results": []
+  "results": [
+    {
+      "source_sentence": "In this policy bridge article, we present the key issues regarding the safety, efficacy, funding, and governance of coastal and marine systems in support of climate change mitigation",
+      "changes": [
+        {
+          "input_word": "coastal and marine",
+          "formatted": "coastal-marine",
+          "start_idx": 116,
+          "end_idx": 134,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'systems'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 1
+        }
+      ],
+      "para_id": 13,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:15:26.554589",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "There may be potential for coastal blue carbon and marine carbon dioxide removal (mCDR actions to impact climate change mitigation significantly over the rest of the twenty-first century, particularly post 2050.",
+      "changes": [
+        {
+          "input_word": "coastal blue",
+          "formatted": "coastal-blue",
+          "start_idx": 27,
+          "end_idx": 39,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'carbon'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 2
+        }
+      ],
+      "para_id": 13,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:15:26.554589",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "In order to limit warming to between 1.5°C to 2°C, human managed carbon dioxide removal (CDR) mechanisms are unavoidable in nearly all climate scenarios (Anderson & Peters, 2016), due to a significant “emissions gap” (Figure 1) between the remaining budget of carbon dioxide (CO2) that can be released without exceeding these targets and current likely emissions trajectories",
+      "changes": [
+        {
+          "input_word": "human managed",
+          "formatted": "human-managed",
+          "start_idx": 51,
+          "end_idx": 64,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'mechanisms'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 3
+        }
+      ],
+      "para_id": 17,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:18:57.750241",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "Samples for Chl a were filtered through 0.7 µm GF/F filters under low vacuum pressure (approximately −30 kPa), extracted with 100 percent methanol for approximately 24 hour, and stored at 4°C in the dark",
+      "changes": [
+        {
+          "input_word": "low vacuum",
+          "formatted": "low-vacuum",
+          "start_idx": 66,
+          "end_idx": 76,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'pressure'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 4
+        }
+      ],
+      "para_id": 22,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:32:49.747842",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "At high light intensities the surface fluorescence signal can be affected by algal non-photochemical quenching, which can damage or down-regulate photosystem II and lower the proportion of absorbed light that is emitted as fluorescence (Öquist et al., 1992[AQ: Please insert complete reference details for Öquist et al., 1992 or delete the citation.]; Szmytkowski et al., 2011[AQ: Please insert complete reference details for Szmytkowski et al., 2011 or delete the citation.])",
+      "changes": [
+        {
+          "input_word": "algal non-photochemical",
+          "formatted": "algal-non-photochemical",
+          "start_idx": 77,
+          "end_idx": 100,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'quenching'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 5
+        }
+      ],
+      "para_id": 23,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:37:30.524910",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "The maximum surface temperature (−0.49°C) was observed in the open ocean zone (Station 1), and slightly higher sea surface temperatures, as compared to the other zones, were also observed in the coast and polynyas zone (-1.60 – -1.24°C",
+      "changes": [
+        {
+          "input_word": "open ocean zone",
+          "formatted": "open-ocean zone",
+          "start_idx": 62,
+          "end_idx": 77,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'zone'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 6
+        }
+      ],
+      "para_id": 23,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:37:30.525426",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "The coldest sea surface temperatures were observed in the pack ice zone (−1.72°C – -−1.57°C) (Harris, 2014)",
+      "changes": [
+        {
+          "input_word": "pack ice",
+          "formatted": "pack-ice",
+          "start_idx": 58,
+          "end_idx": 66,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'zone'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 7
+        }
+      ],
+      "para_id": 23,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:37:30.525426",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "The average POC in the pack ice zone was the lowest of all the zones, despite an outlying local maximum of 250 µg ml−1 at Station 2",
+      "changes": [
+        {
+          "input_word": "pack ice",
+          "formatted": "pack-ice",
+          "start_idx": 23,
+          "end_idx": 31,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'zone'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 8
+        }
+      ],
+      "para_id": 23,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:41:43.992409",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "The maximum POC concentration in the upper water column was 753 µg ml−1 in the coastal and polynya zone (ranges from −300 – +700 mV)",
+      "changes": [
+        {
+          "input_word": "coastal and polynya",
+          "formatted": "coastal-polynya",
+          "start_idx": 79,
+          "end_idx": 98,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'zone'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 9
+        }
+      ],
+      "para_id": 23,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:41:43.992409",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "Nevertheless, only between 13-17% of patients undergoing high risk surgery (defined as > 1% mortality), have their wishes documented in the chart.",
+      "changes": [
+        {
+          "input_word": "high risk",
+          "formatted": "high-risk",
+          "start_idx": 57,
+          "end_idx": 66,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'surgery'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 10
+        }
+      ],
+      "para_id": 23,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:41:43.992409",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "The NCP rate estimates ranged from 70.0 mmol C m−2 to 2750 mmol C m−2 from the beginning of the production season (about 6 wk), with the highest value calculated for the open ocean zone and the lowest for the pack ice zone (Forman, 1975)",
+      "changes": [
+        {
+          "input_word": "open ocean",
+          "formatted": "open-ocean",
+          "start_idx": 170,
+          "end_idx": 180,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'zone'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 11
+        }
+      ],
+      "para_id": 24,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:45:57.561683",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "These options include the restriction of trawling to limited areas of shelf seas (via, for example, broader and better-enforced marine protected areas)",
+      "changes": [
+        {
+          "input_word": "shelf seas",
+          "formatted": "shelf-seas",
+          "start_idx": 70,
+          "end_idx": 80,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'seas'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 12
+        }
+      ],
+      "para_id": 24,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:45:57.561683",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "The larger the scale of ambition for coastal and marine systems to contribute to carbon mitigation, the greater the need for substantial socioeconomic restructuring, i.e., to a war footing in the short term, and a future economy in which carbon sequestration is financially beneficial",
+      "changes": [
+        {
+          "input_word": "coastal and marine",
+          "formatted": "coastal-marine",
+          "start_idx": 37,
+          "end_idx": 55,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'systems'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 13
+        }
+      ],
+      "para_id": 24,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:45:57.561683",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "This regimen is administered as a continuous infusion of cytarabine for seven days and anthracycline for the following three days",
+      "changes": [
+        {
+          "input_word": "continuous infusion",
+          "formatted": "continuous-infusion",
+          "start_idx": 34,
+          "end_idx": 53,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'infusion'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 14
+        }
+      ],
+      "para_id": 24,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:45:57.561683",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "One is known as passive targeting, which enables different types of NPs passing across capillary endothelium of tumour vessels and accumulating in tumor site",
+      "changes": [
+        {
+          "input_word": "passive targeting",
+          "formatted": "passive-targeting",
+          "start_idx": 16,
+          "end_idx": 33,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'targeting'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 15
+        }
+      ],
+      "para_id": 24,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:49:43.264644",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "For instance, patients moved from the inpatient heart surgery ward to a native x ray examination 2,232 times.",
+      "changes": [
+        {
+          "input_word": "native x",
+          "formatted": "native-x",
+          "start_idx": 72,
+          "end_idx": 80,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'ray examination'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 16
+        }
+      ],
+      "para_id": 24,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:53:39.248803",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "As a result, the catheterization laboratories were placed in the center of a cluster consisting of the cardiology inpatient ward, the coronary care unit, and the cardiology day ward on the same floor (the 2nd floor)",
+      "changes": [
+        {
+          "input_word": "cardiology inpatient",
+          "formatted": "cardiology-inpatient",
+          "start_idx": 103,
+          "end_idx": 123,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'ward'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 17
+        }
+      ],
+      "para_id": 25,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:53:39.248803",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "Also, the inpatient heart surgery ward, the cardiac surgical intensive care unit, and the heart surgery operating rooms were all placed next to each other on the same floor (the 3rd floor)",
+      "changes": [
+        {
+          "input_word": "inpatient heart",
+          "formatted": "in-patient-heart",
+          "start_idx": 10,
+          "end_idx": 25,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'surgery ward'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 18
+        }
+      ],
+      "para_id": 25,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:53:39.248803",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "The long term target of the Heart Hospital is to gain 15% higher labour productivity than that for the old hospital",
+      "changes": [
+        {
+          "input_word": "long term",
+          "formatted": "long-term",
+          "start_idx": 4,
+          "end_idx": 13,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'target'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 19
+        }
+      ],
+      "para_id": 25,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
+      "timestamp": "2025-06-29T03:56:43.311642",
+      "language": "US English",
+      "is_completed": true,
+      "style_guide": "APA"
+    }
+  ]
 }

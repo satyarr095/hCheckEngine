@@ -13,19 +13,6 @@ from pydantic import BaseModel
 from ai_hyphen_engine import process_sample_inputs
 
 # Sample input data from Node backend
-sample_input_us = {
-    "url": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
-    "style": "apa",
-    "check_list": "hyphen",
-    "eng": "US English"
-}
-
-sample_input_uk = {
-    "url": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
-    "style": "apa",
-    "check_list": "hyphen",
-    "eng": "UK English"
-}
 
 sample_input = {
     "url": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
@@ -34,8 +21,7 @@ sample_input = {
     "eng": "US English"
 }
 
-print("Sample US input:", json.dumps(sample_input_us, indent=2))
-print("Sample UK input:", json.dumps(sample_input_uk, indent=2))
+
 print("real sample input:", json.dumps(sample_input, indent=2))
 
 # Function to run hyphenation analysis
@@ -43,9 +29,7 @@ async def run_hyphenation_analysis():
     """Run hyphenation analysis on all sample inputs"""
     
     # Prepare sample inputs for processing
-    samples = [
-        {"name": "US English Sample", "input": sample_input_us},
-        {"name": "UK English Sample", "input": sample_input_uk}, 
+    samples = [ 
         {"name": "Default Sample", "input": sample_input}
     ]
     
