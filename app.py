@@ -14,21 +14,21 @@ from ai_hyphen_engine import process_sample_inputs
 
 # Sample input data from Node backend
 sample_input_us = {
-    "url": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1751095754711_CSE%202687946_CE.docx",
+    "url": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
     "style": "apa",
     "check_list": "hyphen",
     "eng": "US English"
 }
 
 sample_input_uk = {
-    "url": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1751095754711_CSE%202687946_CE.docx",
+    "url": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
     "style": "apa",
     "check_list": "hyphen",
     "eng": "UK English"
 }
 
 sample_input = {
-    "url": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1751095754711_CSE%202687946_CE.docx",
+    "url": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1750772522543_QuoteshortDoc.docx",
     "style": "apa",
     "check_list": "hyphen",
     "eng": "US English"

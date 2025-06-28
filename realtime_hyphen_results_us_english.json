@@ -1,63 +1,94 @@
 {
   "results": [
     {
-      "source_sentence": "CASE STUDIES IN THE ENVIRONMENT",
+      "source_sentence": "Precisely its ignorance caused, following these same authors (Sæþórsdóttir et al., 2011, 260), that it became ‘home of supernatural beings and outlaws’.",
       "changes": [
         {
-          "input_word": "CASE STUDIES",
-          "formatted": "case-studies",
-          "start_idx": 0,
-          "end_idx": 12,
-          "source": "AI Analysis + Merriam-Webster Dictionary",
+          "input_word": "supernatural beings",
+          "formatted": "supernatural-beings",
+          "start_idx": 119,
+          "end_idx": 138,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
           "metadata": {
-            "rule_applied": "ai_context_analysis",
+            "rule_applied": "enhanced_ai_context_analysis",
             "dictionary_source": "Merriam-Webster Dictionary",
             "style_guide": "APA",
-            "confidence_score": 1.0,
-            "grammar_rule": "AI-determined hyphenation based on context",
-            "ai_model": "LLaMA-3-8B-Instruct"
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'beings'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
           },
           "unique_id": 1
         }
       ],
-      "para_id": 2,
+      "para_id": 14,
       "type": "hyphen",
       "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1751095754711_CSE%202687946_CE.docx",
-      "timestamp": "2025-06-28T23:28:25.941822",
+      "timestamp": "2025-06-29T01:22:36.504163",
       "language": "US English",
       "is_completed": false,
       "style_guide": "APA"
     },
     {
-      "source_sentence": "| Die of Success",
+      "source_sentence": "In fact, while most tourists typically rent a car, there is a direct bus link from the capital to the start of this trail and another pick-up service from the end and back to the capital",
       "changes": [
         {
-          "input_word": "of Success",
-          "formatted": "of-Success",
-          "start_idx": 6,
-          "end_idx": 16,
-          "source": "AI Analysis + Merriam-Webster Dictionary",
+          "input_word": "direct bus",
+          "formatted": "direct-bus",
+          "start_idx": 62,
+          "end_idx": 72,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
           "metadata": {
-            "rule_applied": "ai_context_analysis",
+            "rule_applied": "enhanced_ai_context_analysis",
             "dictionary_source": "Merriam-Webster Dictionary",
             "style_guide": "APA",
             "confidence_score": 0.9,
-            "grammar_rule": "AI-determined hyphenation based on context",
-            "ai_model": "LLaMA-3-8B-Instruct"
+            "grammar_rule": "compound adjective before noun 'link'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
           },
           "unique_id": 2
         }
       ],
-      "para_id": 3,
+      "para_id": 16,
       "type": "hyphen",
       "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1751095754711_CSE%202687946_CE.docx",
-      "timestamp": "2025-06-28T23:30:31.419371",
+      "timestamp": "2025-06-29T02:09:04.451722",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "The bus and shelters are only available on those dates, with a majority occupation in July and August.",
+      "changes": [
+        {
+          "input_word": "majority occupation",
+          "formatted": "majority-occupation",
+          "start_idx": 63,
+          "end_idx": 82,
+          "source": "Enhanced AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "enhanced_ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "compound adjective before noun 'occupation'",
+            "ai_model": "LLaMA-3-8B-Instruct-Enhanced",
+            "validation_passed": true
+          },
+          "unique_id": 3
+        }
+      ],
+      "para_id": 16,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1751095754711_CSE%202687946_CE.docx",
+      "timestamp": "2025-06-29T02:16:26.800120",
       "language": "US English",
       "is_completed": false,
       "style_guide": "APA"
     }
   ],
   "status": "processing",
-  "total_found": 2,
-  "last_updated": "2025-06-28T23:30:31.419371"
+  "total_found": 3,
+  "last_updated": "2025-06-29T02:16:26.800120"
 }
