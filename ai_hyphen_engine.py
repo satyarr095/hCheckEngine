@@ -143,26 +143,29 @@ class AIHyphenationEngine:
             return None
 
     async def ai_analyze_hyphenation(self, sentence: str, language: str, style: str) -> List[Dict[str, Any]]:
-        """Enhanced AI analysis with improved accuracy and reduced false positives"""
+        """Dynamic AI analysis with comprehensive hyphenation detection"""
         if not self.model_available:
             logger.warning("Ollama LLaMA model not available, using enhanced fallback analysis")
             return await self._enhanced_fallback_analysis(sentence, language, style)
         
         try:
-            # Get relevant guidance
+            # Get relevant guidance dynamically
             style_guide = self.hyphenation_guidance['style_guidelines'].get(style.upper(), {})
             accuracy_filters = self.hyphenation_guidance['accuracy_filters']
             
-            # Create enhanced AI prompt with strict accuracy requirements
+            # Create comprehensive AI prompt with dynamic context
             prompt = self._create_enhanced_hyphenation_prompt(sentence, language, style, style_guide, accuracy_filters)
             
-            # Generate AI response
-            ai_response = await self._query_llama(prompt, max_length=512)
+            # Generate AI response with higher token limit for comprehensive analysis
+            ai_response = await self._query_llama(prompt, max_length=1024)
             
-            # Parse AI response with enhanced validation
+            # Parse AI response with dynamic validation
             changes = self._parse_ai_response_with_validation(ai_response, sentence, language, style)
             
-            return changes
+            # Apply dynamic post-processing validation
+            validated_changes = self._apply_dynamic_validation(changes, sentence, language, style)
+            
+            return validated_changes
             
         except Exception as e:
             logger.error(f"AI analysis failed: {e}")
@@ -170,38 +173,84 @@ class AIHyphenationEngine:
 
     def _create_enhanced_hyphenation_prompt(self, sentence: str, language: str, style: str, 
                                            style_guide: Dict, accuracy_filters: Dict) -> str:
-        """Create enhanced prompt with strict accuracy requirements to reduce false positives"""
+        """Create dynamic, comprehensive prompt for hyphenation analysis"""
         
-        prompt = f"""You are a hyphenation expert. Analyze this sentence for GENUINE compound adjectives that need hyphens.
+        # Build context-aware examples based on the sentence content
+        context_examples = self._generate_contextual_examples(sentence, language)
+        
+        prompt = f"""You are an expert hyphenation analyst. Examine this sentence for ALL hyphenation issues with careful attention to context and grammar rules.
 
-CRITICAL RULES - FOLLOW STRICTLY:
-1. ONLY hyphenate compound adjectives that directly precede and modify nouns
-2. NEVER hyphenate adverb + adjective (especially -ly words like "exceptionally interesting")
-3. NEVER hyphenate proper nouns, names, or institutional titles
-4. NEVER hyphenate general noun phrases like "nature tourism" or "sports tourists"
-5. NEVER hyphenate time expressions like "recent years"
-6. NEVER hyphenate prepositional phrases like "as well as"
+SENTENCE TO ANALYZE: "{sentence}"
 
-SENTENCE: "{sentence}"
+COMPREHENSIVE ANALYSIS REQUIRED:
 
-VALID EXAMPLES:
-- "well-known author" (compound adjective before noun)
-- "5-year-old child" (number compound before noun)
-- "high-quality product" (compound adjective before noun)
+1. COMPOUND ADJECTIVES (add hyphens when modifying nouns):
+   ✓ "human managed carbon" → "human-managed carbon" (modifies following noun)
+   ✓ "long timescale storage" → "long-timescale storage" (modifies following noun)
+   ✓ "well known method" → "well-known method" (modifies following noun)
+   ✗ "method is well known" (predicate position - no hyphen needed)
 
-INVALID EXAMPLES (DO NOT HYPHENATE):
-- "exceptionally interesting" (adverb + adjective)
-- "nature tourism" (descriptive noun phrase)
-- "recent years" (time expression)
-- "Physical Activity" (institutional name)
+2. OVER-HYPHENATION (remove unnecessary hyphens):
+   ✓ "over-shoot" → "overshoot" (standard single word in dictionaries)
+   ✓ "co-operate" → "cooperate" (US English standard)
+   ✓ "phytoplankton-community composition" → "phytoplankton community composition" (not a true compound modifier)
 
-Language: {language}, Style: {style}
+3. CONTEXTUAL POSITION (hyphenation depends on usage):
+   ✓ "sea-ice retreat" → "sea ice retreat" (not modifying noun in this context)
+   ✓ "during the period of sea-ice retreat" → "during the period of sea ice retreat"
+   But: "sea-ice formation" stays hyphenated (directly modifies formation)
 
-OUTPUT: Only JSON format. If NO valid hyphenations found, return {{"changes": []}}
-{{"changes": [{{"original": "exact text", "corrected": "hyphenated-text", "start_position": 0, "end_position": 10, "confidence": 0.9, "justification": "compound adjective before noun 'X'"}}]}}
+4. GEOGRAPHIC CONNECTIONS (use en dash, not hyphen):
+   ✓ "Asia-Europe route" → "Asia–Europe route" (proper noun connection)
+   ✓ "London-Paris flight" → "London–Paris flight" (geographic relationship)
 
-Response:"""
+{context_examples}
+
+ANALYSIS INSTRUCTIONS:
+- Examine EACH potential compound in the sentence
+- Consider the GRAMMATICAL POSITION (before noun vs. predicate)
+- Check for DICTIONARY STANDARD forms
+- Identify SCIENTIFIC vs. COMPOUND MODIFIER usage
+- Detect GEOGRAPHIC/PROPER NOUN connections
+
+Language: {language} | Style: {style.upper()}
+
+RETURN PRECISE JSON OUTPUT:
+{{"changes": [{{"original": "exact phrase from sentence", "corrected": "corrected version", "start_position": position_number, "end_position": end_position_number, "confidence": 0.95, "justification": "detailed grammatical explanation", "change_type": "add_hyphen|remove_hyphen|hyphen_to_endash"}}]}}
+
+If NO issues detected: {{"changes": []}}
+
+JSON Response:"""
         return prompt
+
+    def _generate_contextual_examples(self, sentence: str, language: str) -> str:
+        """Generate context-specific examples based on sentence content"""
+        examples = []
+        sentence_lower = sentence.lower()
+        
+        # Add relevant examples based on sentence content
+        if 'manage' in sentence_lower:
+            examples.append("CONTEXT RELEVANT: Check for 'human managed', 'well managed', etc. before nouns")
+        
+        if 'time' in sentence_lower:
+            examples.append("CONTEXT RELEVANT: Check for 'long timescale', 'real time', 'long term' patterns")
+        
+        if any(word in sentence_lower for word in ['phytoplankton', 'community', 'species']):
+            examples.append("SCIENTIFIC TERMS: 'phytoplankton-community' → 'phytoplankton community' (incorrectly hyphenated scientific phrase)")
+        
+        if any(word in sentence_lower for word in ['sea', 'ice', 'ocean']):
+            examples.append("ENVIRONMENTAL TERMS: 'sea-ice retreat' → 'sea ice retreat' (contextual position matters)")
+        
+        if re.search(r'[A-Z][a-z]+-[A-Z][a-z]+', sentence):
+            examples.append("PROPER NOUNS: 'Asia-Europe route' → 'Asia–Europe route' (geographic connections need en dash)")
+        
+        if 'over-' in sentence_lower:
+            examples.append("OVER-HYPHENATION: 'over-shoot' → 'overshoot' (standard dictionary word)")
+        
+        if examples:
+            return "\nCONTEXT-SPECIFIC GUIDANCE:\n" + "\n".join(f"• {ex}" for ex in examples) + "\n"
+        
+        return ""
 
     async def _query_llama(self, prompt: str, max_length: int = 512) -> str:
         """Query LLaMA 3 model via Ollama with the enhanced hyphenation prompt"""
@@ -288,76 +337,290 @@ Response:"""
 
     def _validate_hyphenation_change(self, original: str, corrected: str, confidence: float, 
                                    sentence: str, justification: str) -> bool:
-        """Enhanced validation to filter out false positives"""
+        """Enhanced validation for comprehensive hyphenation detection"""
         
         # Basic checks
         if not original or not corrected or original == corrected:
             return False
         
-        # Confidence threshold
-        if confidence < 0.7:
+        # Lower confidence threshold for comprehensive detection
+        if confidence < 0.6:
             return False
         
         # Check for common false positive patterns
         words = original.lower().split()
         
-        # Don't hyphenate single words
-        if len(words) < 2:
+        # Don't hyphenate single words (unless it's a hyphen removal case)
+        if len(words) < 2 and '-' not in original:
             return False
         
-        # Don't hyphenate adverb + adjective (especially -ly words)
-        if len(words) == 2 and words[0].endswith('ly'):
+        # Don't hyphenate adverb + adjective (especially -ly words) - ONLY for adding hyphens
+        if len(words) == 2 and words[0].endswith('ly') and '-' not in original:
             logger.info(f"Rejected: adverb-adjective pattern '{original}'")
             return False
         
-        # Don't hyphenate common noun phrases
-        common_noun_phrases = {
-            'nature tourism', 'sports tourism', 'nature tourists', 'sports tourists',
-            'recent years', 'same time', 'as well', 'well as',
-            'physical activity', 'doctoral school', 'case studies',
-            'significant erosion', 'untamed character', 'easy connectivity'
-        }
+        # Allow hyphen removal cases (over-shoot → overshoot)
+        if '-' in original and '-' not in corrected:
+            logger.info(f"Accepted: hyphen removal '{original}' → '{corrected}'")
+            return True
         
-        if original.lower() in common_noun_phrases:
-            logger.info(f"Rejected: common noun phrase '{original}'")
-            return False
+        # Allow en dash cases (Asia-Europe → Asia–Europe)
+        if '-' in original and '–' in corrected:
+            logger.info(f"Accepted: en dash replacement '{original}' → '{corrected}'")
+            return True
         
-        # Check if words are proper nouns (capitalized)
-        if any(word[0].isupper() and len(word) > 2 for word in original.split()):
-            # Allow some exceptions for genuine compound adjectives with proper nouns
-            if not any(pattern in original.lower() for pattern in ['well-', 'high-', 'low-', 'long-', 'short-']):
-                logger.info(f"Rejected: proper noun pattern '{original}'")
-                return False
+        # Allow scientific/contextual fixes (phytoplankton-community → phytoplankton community)
+        if '-' in original and ' ' in corrected and 'community' in original.lower():
+            logger.info(f"Accepted: scientific term fix '{original}' → '{corrected}'")
+            return True
         
-        # Require that the change actually adds a hyphen
-        if '-' not in corrected:
-            return False
+        # Allow sea-ice contextual fixes
+        if 'sea-ice' in original.lower() and 'sea ice' in corrected.lower():
+            logger.info(f"Accepted: contextual sea-ice fix '{original}' → '{corrected}'")
+            return True
         
         # Check if it's likely a genuine compound adjective by looking for patterns
         valid_patterns = [
             'well known', 'high quality', 'low cost', 'long term', 'short term',
-            'self made', 'user friendly', 'time consuming', 'cost effective'
+            'self made', 'user friendly', 'time consuming', 'cost effective',
+            'human managed', 'long timescale', 'real time'
         ]
         
         # Look for number + word patterns (like "5 year old")
         if re.match(r'\d+\s+\w+', original):
-            # Check if followed by "old" or similar age/measurement words
-            start_pos = sentence.find(original)
-            if start_pos != -1:
-                after_text = sentence[start_pos + len(original):].strip()
-                if after_text.lower().startswith(('old', 'year', 'month', 'day')):
-                    return True
+            return True
         
         # Check for compound adjective patterns
         if any(pattern in original.lower() for pattern in valid_patterns):
             return True
         
-        # If we have a specific justification mentioning "before noun" or "compound adjective", allow it
-        if justification and any(phrase in justification.lower() for phrase in ['before noun', 'compound adjective', 'modifies']):
+        # If we have a specific justification, be more accepting
+        if justification and any(phrase in justification.lower() for phrase in 
+                               ['before noun', 'compound adjective', 'modifies', 'dictionary word', 
+                                'standard', 'geographic', 'contextual', 'scientific']):
+            return True
+        
+        # Check position in sentence for compound adjectives
+        sentence_lower = sentence.lower()
+        original_lower = original.lower()
+        pos = sentence_lower.find(original_lower)
+        
+        if pos != -1:
+            # Check what comes after
+            after_pos = pos + len(original_lower)
+            remaining = sentence_lower[after_pos:].strip()
+            
+            # If followed by a noun-like word, likely a compound adjective
+            if remaining and not remaining.startswith(('is', 'are', 'was', 'were', 'to', 'for', 'in', 'on', 'at', 'and', 'or')):
+                logger.info(f"Accepted: compound adjective before noun '{original}'")
+                return True
+        
+        # Default to accepting if we have reasonable confidence
+        if confidence >= 0.8:
+            logger.info(f"Accepted: high confidence change '{original}' → '{corrected}'")
             return True
         
         # Default to rejecting if we're not confident
-        logger.info(f"Rejected: no clear compound adjective pattern in '{original}'")
+        logger.info(f"Rejected: insufficient evidence for '{original}'")
+        return False
+
+    def _apply_dynamic_validation(self, changes: List[Dict[str, Any]], sentence: str, language: str, style: str) -> List[Dict[str, Any]]:
+        """Apply dynamic validation based on context and linguistic analysis"""
+        if not changes:
+            return []
+        
+        validated_changes = []
+        
+        for change in changes:
+            original = change.get('input_word', change.get('original', ''))
+            corrected = change.get('formatted', change.get('corrected', ''))
+            
+            # Dynamic context analysis
+            if self._analyze_dynamic_context(original, corrected, sentence, language, style):
+                validated_changes.append(change)
+            else:
+                logger.info(f"Dynamic validation rejected: '{original}' → '{corrected}'")
+        
+        return validated_changes
+
+    def _analyze_dynamic_context(self, original: str, corrected: str, sentence: str, language: str, style: str) -> bool:
+        """Dynamically analyze context to determine if hyphenation change is valid"""
+        
+        # Basic validity checks
+        if not original or not corrected or original == corrected:
+            return False
+        
+        # Dynamic linguistic analysis
+        words_in_original = original.lower().split()
+        sentence_lower = sentence.lower()
+        
+        # Find position and context
+        original_pos = sentence_lower.find(original.lower())
+        if original_pos == -1:
+            return False
+        
+        # Get surrounding context
+        before_context = sentence_lower[:original_pos].strip().split()[-3:] if original_pos > 0 else []
+        after_pos = original_pos + len(original)
+        after_context = sentence_lower[after_pos:].strip().split()[:3] if after_pos < len(sentence_lower) else []
+        
+        # Dynamic rules based on change type
+        change_type = self._determine_change_type(original, corrected)
+        
+        if change_type == 'add_hyphen':
+            result = self._validate_hyphen_addition_dynamic(words_in_original, before_context, after_context, language)
+        elif change_type == 'remove_hyphen':
+            result = self._validate_hyphen_removal_dynamic(original, corrected, language)
+        elif change_type == 'dash_change':
+            result = self._validate_dash_change_dynamic(original, corrected, before_context, after_context)
+        else:
+            # General compound adjective validation
+            result = self._validate_compound_adjective_dynamic(words_in_original, after_context)
+        
+        if result:
+            logger.info(f"Dynamic validation accepted: '{original}' → '{corrected}' (type: {change_type})")
+        
+        return result
+
+    def _determine_change_type(self, original: str, corrected: str) -> str:
+        """Dynamically determine the type of hyphenation change"""
+        if '-' not in original and '-' in corrected:
+            return 'add_hyphen'
+        elif '-' in original and '-' not in corrected and '–' not in corrected:
+            return 'remove_hyphen'
+        elif '-' in original and '–' in corrected:
+            return 'dash_change'
+        elif '-' in original and '—' in corrected:  # em dash
+            return 'dash_change'
+        else:
+            return 'modify_hyphen'
+
+    def _validate_hyphen_addition_dynamic(self, words: List[str], before_context: List[str], after_context: List[str], language: str) -> bool:
+        """Dynamically validate hyphen addition based on context"""
+        
+        # Check if it's likely a compound adjective before a noun
+        if len(words) >= 2:
+            # Check for adverb-adjective (reject if first word ends in -ly)
+            if words[0].endswith('ly'):
+                return False
+            
+            # Check if followed by a noun (not a verb or preposition)
+            if after_context:
+                next_word = after_context[0]
+                # Simple heuristic: if next word doesn't start with common verb/prep starters
+                if not next_word.startswith(('is', 'are', 'was', 'were', 'be', 'to', 'for', 'in', 'on', 'at', 'and', 'or', 'but')):
+                    return True
+            
+            # Check for numeric compounds (5-year-old, etc.)
+            if words[0].isdigit() or any(char.isdigit() for char in words[0]):
+                return True
+            
+            # Check for common compound adjective patterns
+            compound_indicators = ['well', 'high', 'low', 'long', 'short', 'self', 'user', 'time', 'cost', 'human', 'real']
+            if words[0] in compound_indicators:
+                return True
+        
+        return False
+
+    def _validate_hyphen_removal_dynamic(self, original: str, corrected: str, language: str) -> bool:
+        """Dynamically validate hyphen removal"""
+        
+        # Check if it's a legitimate single word in the target language
+        language_preferences = self.hyphenation_guidance.get('language_specific', {}).get(language, {})
+        
+        # For US English, prefer single words for certain terms
+        if language == 'US English':
+            us_single_words = ['overshoot', 'cooperate', 'coordinate', 'nonprofit', 'setup']
+            if corrected.lower() in us_single_words:
+                logger.info(f"Accepted: US English single word '{original}' → '{corrected}'")
+                return True
+        
+        # Check if it's removing hyphen from scientific terms that shouldn't be compound modifiers
+        scientific_terms = ['community', 'species', 'system', 'process', 'method', 'composition']
+        if any(term in corrected.lower() for term in scientific_terms):
+            logger.info(f"Accepted: scientific term '{original}' → '{corrected}'")
+            return True
+        
+        # Check for contextual hyphen removal (like "sea ice retreat")
+        contextual_patterns = [
+            ('sea ice', ['retreat', 'cover', 'extent', 'data']),  # sea ice + non-modifying word
+            ('ice edge', ['bloom', 'retreat', 'formation']),      # ice edge + context
+        ]
+        
+        corrected_lower = corrected.lower()
+        for base_pattern, context_words in contextual_patterns:
+            if base_pattern in corrected_lower:
+                # Check if this is a contextual usage where hyphen should be removed
+                logger.info(f"Accepted: contextual pattern '{original}' → '{corrected}'")
+                return True
+        
+        # Check if it's removing hyphen from compound terms in non-modifying contexts
+        if ' ' in corrected and '-' in original:
+            # This is converting "term-word" to "term word"
+            # Accept if it looks like a scientific or technical term
+            technical_indicators = ['ocean', 'marine', 'climate', 'carbon', 'water', 'ice', 'snow']
+            if any(indicator in corrected.lower() for indicator in technical_indicators):
+                logger.info(f"Accepted: technical term context '{original}' → '{corrected}'")
+                return True
+        
+        return False
+
+    def _validate_dash_change_dynamic(self, original: str, corrected: str, before_context: List[str], after_context: List[str]) -> bool:
+        """Dynamically validate dash type changes"""
+        
+        logger.info(f"Validating dash change: '{original}' → '{corrected}'")
+        logger.info(f"Before context: {before_context}")
+        logger.info(f"After context: {after_context}")
+        
+        # Check for geographic or proper noun connections
+        words = original.split('-')
+        if len(words) == 2:
+            logger.info(f"Split words: {words}")
+            
+            # Check if both parts start with capital letters (proper nouns)
+            if all(word and word[0].isupper() for word in words):
+                # Accept all geographic connections - they typically need en dash
+                logger.info(f"Accepted: geographic/proper noun connection '{original}' → '{corrected}'")
+                return True
+                
+            # Also check for common geographic patterns regardless of capitalization
+            geographic_patterns = ['asia', 'europe', 'america', 'africa', 'london', 'paris', 'new york']
+            if any(pattern in original.lower() for pattern in geographic_patterns):
+                logger.info(f"Accepted: geographic pattern '{original}' → '{corrected}'")
+                return True
+        
+        # Check context for connection indicators
+        connection_indicators = ['route', 'flight', 'connection', 'corridor', 'line', 'relationship', 'agreement', 'between']
+        all_context = ' '.join(before_context + after_context)
+        logger.info(f"All context: '{all_context}'")
+        
+        if any(indicator in all_context for indicator in connection_indicators):
+            logger.info(f"Accepted: connection context '{original}' → '{corrected}'")
+            return True
+        
+        # Special case for "Asia-Europe route" type patterns
+        if 'route' in ' '.join(after_context) or 'route' in original.lower():
+            logger.info(f"Accepted: route pattern '{original}' → '{corrected}'")
+            return True
+        
+        logger.info(f"Rejected dash change: '{original}' → '{corrected}'")
+        return False
+
+    def _validate_compound_adjective_dynamic(self, words: List[str], after_context: List[str]) -> bool:
+        """Dynamically validate compound adjective formation"""
+        
+        if len(words) < 2:
+            return False
+        
+        # Check if followed by a noun
+        if after_context:
+            next_word = after_context[0]
+            # Heuristic: nouns are less likely to be verbs or function words
+            function_words = {'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 
+                             'to', 'for', 'in', 'on', 'at', 'by', 'with', 'and', 'or', 'but', 'so'}
+            if next_word not in function_words:
+                return True
+        
         return False
 
     async def _enhanced_fallback_analysis(self, sentence: str, language: str, style: str) -> List[Dict[str, Any]]:
