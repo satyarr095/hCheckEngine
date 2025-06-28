@@ -1,0 +1,63 @@
+{
+  "results": [
+    {
+      "source_sentence": "CASE STUDIES IN THE ENVIRONMENT",
+      "changes": [
+        {
+          "input_word": "CASE STUDIES",
+          "formatted": "case-studies",
+          "start_idx": 0,
+          "end_idx": 12,
+          "source": "AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 1.0,
+            "grammar_rule": "AI-determined hyphenation based on context",
+            "ai_model": "LLaMA-3-8B-Instruct"
+          },
+          "unique_id": 1
+        }
+      ],
+      "para_id": 2,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1751095754711_CSE%202687946_CE.docx",
+      "timestamp": "2025-06-28T23:28:25.941822",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    },
+    {
+      "source_sentence": "| Die of Success",
+      "changes": [
+        {
+          "input_word": "of Success",
+          "formatted": "of-Success",
+          "start_idx": 6,
+          "end_idx": 16,
+          "source": "AI Analysis + Merriam-Webster Dictionary",
+          "metadata": {
+            "rule_applied": "ai_context_analysis",
+            "dictionary_source": "Merriam-Webster Dictionary",
+            "style_guide": "APA",
+            "confidence_score": 0.9,
+            "grammar_rule": "AI-determined hyphenation based on context",
+            "ai_model": "LLaMA-3-8B-Instruct"
+          },
+          "unique_id": 2
+        }
+      ],
+      "para_id": 3,
+      "type": "hyphen",
+      "filename": "https://copyedit-dev.s3.us-east-2.amazonaws.com/1751095754711_CSE%202687946_CE.docx",
+      "timestamp": "2025-06-28T23:30:31.419371",
+      "language": "US English",
+      "is_completed": false,
+      "style_guide": "APA"
+    }
+  ],
+  "status": "processing",
+  "total_found": 2,
+  "last_updated": "2025-06-28T23:30:31.419371"
+}
