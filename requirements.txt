@@ -1,5 +1,6 @@
-asyncio
-json
+fastapi
+uvicorn[standard]
+pydantic
 regex
 requests
 python-docx
