@@ -8,19 +8,22 @@
 
 ## 2. TEXT ANALYSIS SCOPE
 ### INCLUDE these sections:
-- Body text
-- Figure captions
-- Table captions and content
-- Abstracts
-- Title
-- Keywords
-- Headings
+- Body text ONLY (regular paragraph text)
+- Figure captions (if they contain compound adjectives)
+- Table captions and content (if they contain compound adjectives)
 
-### EXCLUDE these sections:
+### EXCLUDE these sections (NEVER suggest changes):
 - Reference section
-- In-text citations
-- Author names and affiliations
+- In-text citations (anything with "et al", DOIs, URLs)
+- Author names and affiliations (proper names)
 - Corresponding author email addresses
+- Titles and headings (ALL CAPS, Title Case)
+- Institution names (universities, research centers)
+- Geographic locations and proper nouns
+- Company names and brand names
+- Academic degrees and credentials
+- Numbered lists and bullet points
+- Abstract titles and section headers
 
 ## 3. CONTEXT ANALYSIS RULES
 ### Rule 3.1: Compound Adjective Detection
@@ -111,3 +114,21 @@
 3. Apply language-specific rules (Rule 4)
 4. Verify consistency (Rule 5)
 5. Format output (Rule 7) 
+
+### Rule 7.2: STRICT EXCLUSION RULES (NEVER suggest changes for):
+- Proper names: "Martin Johnson", "Erik van Doorn"
+- Institution names: "Bantry Marine Research Station", "Ecodiversity Ltd"
+- Geographic locations: "Gearhies, Co", "Schull, Co"
+- Citations: "Johnson et al", "Smith, 2023"
+- Titles/Headers: "CASE STUDIES IN THE ENVIRONMENT"
+- Lists of adjectives: "Scientific, Legal, Economic and Governance"
+- Author affiliations and addresses
+- Email addresses and URLs
+- Academic credentials and degrees
+- Company names and brands
+
+### Rule 7.3: BODY TEXT ONLY RULE
+- ONLY suggest hyphenation changes for regular paragraph text
+- Text must contain genuine compound adjectives before nouns
+- Example: "The well known method" → "The well-known method" (CORRECT)
+- Example: "Martin Johnson" → NO CHANGE (proper name)
